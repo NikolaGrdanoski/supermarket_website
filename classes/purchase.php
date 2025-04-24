@@ -1,4 +1,5 @@
 <?php   
+
     class Purchase {
         private int $purchaseID;
         private int $userID;
