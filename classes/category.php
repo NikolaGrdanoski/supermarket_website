@@ -1,6 +1,6 @@
 <?php
 
-    class Category {
+    class category {
         private int $categoryID;
         private string $name;
         private string $description;
