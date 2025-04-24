@@ -1,5 +1,5 @@
 <?php   
-    class purchase {
+    class Purchase {
         private int $purchaseID;
         private int $userID;
         private int $total;

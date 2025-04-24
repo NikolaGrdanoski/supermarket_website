@@ -1,6 +1,6 @@
 <?php
 
-    class product {
+    class Product {
         private int $productID;
         private int $categoryID;
         private string $name;

@@ -5,7 +5,7 @@ enum Role {
     case Admin;
 }
 
-class user {
+class User {
     private int $userID;
     private string $username;
     private string $password;
