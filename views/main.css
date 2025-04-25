@@ -54,3 +54,12 @@ h1,
 form {
     margin-bottom: 20px;
 }
+
+td {
+    text-align: center;
+}
+td.description {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+}
