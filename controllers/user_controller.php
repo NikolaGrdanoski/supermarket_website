@@ -29,11 +29,11 @@
             $country = filter_input(INPUT_POST, 'country');
             $role = filter_input(INPUT_POST, 'role');
             
-            if (empty($username) || empty($password) || empty($email) || empty($name) || empty($surname) || empty($phone) || empty($country)) {
+            /*if (empty($username) || empty($password) || empty($email) || empty($name) || empty($surname) || empty($phone) || empty($country)) {
                 $error = 'All fields are required.';
                 include_once './views/user/register.php';
                 return;
-            }
+            }*/
 
             if ($password !== $confirm_password) {
                 $error = "Passwords don't match.";

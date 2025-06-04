@@ -16,7 +16,7 @@
         public function filter_products($search_string) {
             $productDB = new ProductDB();
             $products = $productDB->find_by_name($search_string);
-            include_once './views/product/product_list.php';
+            include_once './views/product/list.php';
         }   
 
         public function add_product() {
@@ -27,7 +27,7 @@
                 $categoryID = filter_input(INPUT_POST, 'categoryID', FILTER_VALIDATE_INT);
 
                 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                    $upload_dir = 'uploads/';
+                    $upload_dir = 'res/';
                     $file_name = basename($_FILES['image']['name']);
                     $target_file = $upload_dir . $file_name;
 
@@ -47,7 +47,7 @@
                 }
 
                 $productDB = new ProductDB();
-                $productDB->create($name, $description, $price, $categoryID, $image_path, htmlspecialchars($_SESSION['userID']));
+                $productDB->create($name, $description, $price, $image_path, $categoryID, htmlspecialchars($_SESSION['userID']));
                 echo "Product added successfully.";
                 header('Location: index.php');
                 exit;
@@ -72,7 +72,7 @@
                 $image_path = null;
 
                 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                    $upload_dir = 'uploads/';
+                    $upload_dir = 'res/';
                     $file_name = basename($_FILES['image']['name']);
                     $target_file = $upload_dir . $file_name;
 

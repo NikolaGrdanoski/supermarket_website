@@ -25,7 +25,7 @@
 
             if (isset($userID) && isset($productID) && isset($quantity)) {
                 $cart_db = new CartDB();
-                $cart_db->add_to_cart($userID, $productID, $quantity);
+                $cart_db->update_cart_quantity($userID, $productID, $quantity);
                 header("Location: index.php?action=show_cart");
             } else {
                 require './errors/invalid_input.php';
@@ -78,12 +78,12 @@
                 $total_cost += $item['price'] * $item['quantity'];
             }
     
-            $order_db = new PurchaseDB(); 
-            $orderID = $order_db->create_purchase($userID, $total_cost); 
+            $purchase_db = new PurchaseDB(); 
+            $purchaseID = $purchase_db->create_purchase($userID, $total_cost); 
     
             $cart_db->clear_cart($userID);
     
-            header("Location: index.php?action=order_confirmation&orderID=" . $orderID);
+            header("Location: index.php?action=purchase_confirmation&purchaseID=" . $purchaseID);
             exit;
         }
     }

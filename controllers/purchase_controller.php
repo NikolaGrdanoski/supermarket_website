@@ -1,7 +1,6 @@
 <?php
-    require_once './models/purchase_db.php';
-    require_once './models/cart_db.php';
-    require_once './send_mail.php';
+    require_once './models/purchasedb.php';
+    require_once './models/cartdb.php';
 
     class PurchaseController {
         public function view_purchase($purchaseID) {

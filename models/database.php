@@ -1,9 +1,9 @@
 <?php
 
 class Database {
-    private static string $dbinit = 'mysql:host=localhost; dbname=supermarket_database';
-    private static string $username = 'ng';
-    private static string $password = 'eh98gyfh8971gf';
+    private static string $dbinit = 'mysql:host=localhost; dbname=supermarket_website_db';
+    private static string $username = 'root';
+    private static string $password = '';
     private static PDO $db;
 
     private function __construct() {}

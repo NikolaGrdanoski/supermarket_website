@@ -2,7 +2,7 @@
 
     class CartDB {
         public function get_cart_items($userID) {
-            $query = "SELECT * FROM cart JOIN products ON cart.productID = products.productID WHERE cart.userID = :userID";
+            $query = "SELECT * FROM cart JOIN product ON cart.productID = product.productID WHERE cart.userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
             $statement->execute();
@@ -50,7 +50,7 @@
         }
 
         public function calculate_cart_total($userID) {
-            $query = "SELECT SUM(products.price * cart.quantity) AS total_cost FROM cart JOIN products ON cart.productID = products.productID WHERE cart.userID = :userID";
+            $query = "SELECT SUM product.price * cart.quantity) AS total_cost FROM cart JOIN product ON cart.productID = product.productID WHERE cart.userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
             $statement->execute();

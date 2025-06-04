@@ -2,7 +2,7 @@
 
     class ProductDB {
         public function create($name, $description, $price, $image, $categoryID, $userID) {
-            $query = "INSERT INTO products (name, description, price, image, categoryID, userID) 
+            $query = "INSERT INTO product (name, description, price, image, categoryID, userID) 
             VALUES (:name, :description, :price, :image, :categoryID, :userID)";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':name', $name);
@@ -16,16 +16,16 @@
         }
 
         public function find_all() {
-            $query = "SELECT * FROM products";
+            $query = "SELECT * FROM product";
             $statement = Database::get_db()->prepare($query);
             $statement->execute();
-            $products = $statement->fetchAll();
+            $product = $statement->fetchAll();
             $statement->closeCursor();
-            return $products;
+            return $product;
         }
 
         public function find_by_name($name) {
-            $query = "SELECT products.*, categories.name FROM products JOIN categories ON products.categoryID = categories.categoryID";
+            $query = "SELECT product.*, category.name FROM product JOIN category ON product.categoryID = category.categoryID WHERE LOWER(product.name) LIKE LOWER(:name)";;
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':name', '%' . $name . '%');
             $statement->execute();
@@ -35,7 +35,7 @@
         }
 
         public function find_by_id($productID) {
-            $query = "SELECT * FROM products WHERE productID = :productID";
+            $query = "SELECT * FROM product WHERE productID = :productID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':productID', $productID);
             $statement->execute();
@@ -45,17 +45,17 @@
         }
 
         public function find_by_category($categoryID) {
-            $query = "SELECT * FROM products WHERE categoryID = :categoryID";
+            $query = "SELECT * FROM product WHERE categoryID = :categoryID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':categoryID', $categoryID);
             $statement->execute();
-            $products = $statement->fetchAll();
+            $product = $statement->fetchAll();
             $statement->closeCursor();
-            return $products;
+            return $product;
         }
 
         public function update($productID, $name, $description, $price, $categoryID, $image) {
-            $query = "UPDATE products  SET name = :name, description = :description, price = :price, categoryID = :categoryID, image = :image WHERE productID = :productID";
+            $query = "UPDATE product  SET name = :name, description = :description, price = :price, categoryID = :categoryID, image = :image WHERE productID = :productID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':productID', $productID);
             $statement->bindValue(':name', $name);
@@ -68,7 +68,7 @@
         }
 
         public function delete($productID) {
-            $query = "DELETE FROM products WHERE productID = :productID";
+            $query = "DELETE FROM product WHERE productID = :productID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':productID', $productID);
             $statement->execute();

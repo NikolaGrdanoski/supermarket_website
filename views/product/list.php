@@ -9,32 +9,40 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
+        <?php include_once './views/header.php'; ?>
         <main>
-            <div class="container-lg">
-                <div class="row">
-                    <h1>Product List</h1>
-                    <hr>
-                    <?php if (empty($products)): ?>
-                        <p>No products found.</p>
-                    <?php else: ?>
-                        <div class="col-md-6">
-                            <div class="card smooth-transition">
-                                <div class="card-body">
-                                    <?php foreach($products as $product): ?>
-                                        <p>
-                                            <img src="<?php echo strip_tags($product['image']); ?>" alt="<?php echo strip_tags($product['name']); ?>" style="widp: 100px; height: auto;">
-                                        </p>
-                                        <h3 class="card-title">Name: <?php echo strip_tags($product['name']); ?></d>
-                                        <p class="description">Description: <?php echo strip_tags($product['description']); ?></p>
-                                        <p class="card-text">Category: <?php echo strip_tags($product['category_name']); ?></p> 
-                                        <p class="card-text">Price: <?php echo number_format($product['price'], 2); ?>$</p>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endif; ?>
+            <div class="container mt-5 pt-5">
+                <div class="container-lg">
+                    <div class="row">
+                        <h1>Product List</h1>
+                        <hr>
+                        <?php if (empty($products)): ?>
+                            <p>No products found.</p>
+                        <?php else: ?>
+                            <?php foreach($products as $product): ?>
+                                    <tr class="text-center">
+                                        <td>
+                                            <img src="<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width: 100px; height: auto;">
+                                        </td>
+                                        <td><?php echo htmlspecialchars($product['name']); ?></td>
+                                        <td class="description"><?php echo htmlspecialchars($product['description']); ?></td>
+                                        <td>$<?php echo number_format($product['price'], 2); ?></td>
+                                        <td>
+                                            <div class="container">
+                                            <a href="index.php?action=show_product&productID=<?php echo $product['productID']; ?>" class="btn btn-info">View</a>
+                                            <?php if (isset($_SESSION['userID']) && $_SESSION['role'] === 'Admin'): ?>
+                                            <a href="index.php?action=edit_product&productID=<?php echo $product['productID']; ?>" class="btn btn-warning">Edit</a>
+                                            <a href="index.php?action=delete_product&productID=<?php echo $product['productID']; ?>" class="btn btn-danger">Delete</a>
+                                            <?php endif; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </main>
+        <?php include_once './views/footer.php'; ?>
     </body>
 </html>

@@ -2,7 +2,7 @@
 
     class CategoryDB {
         public function create($name, $description) {
-            $query = "INSERT INTO categories (name, description)
+            $query = "INSERT INTO category (name, description)
             VALUES (:name, :description)";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':name', $name);
@@ -12,16 +12,16 @@
         }
 
         public function find_all() {
-            $query = "SELECT * FROM categories";
+            $query = "SELECT * FROM category";
             $statement = Database::get_db()->prepare($query);
             $statement->execute();
-            $categories = $statement->fetchAll();
+            $category = $statement->fetchAll();
             $statement->closeCursor();
-            return $categories;
+            return $category;
         }
 
         public function find_by_id($categoryID) {
-            $query = "SELECT * FROM categories WHERE categoryID = :categoryID";
+            $query = "SELECT * FROM category WHERE categoryID = :categoryID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':categoryID', $categoryID);
             $statement->execute();
@@ -31,7 +31,7 @@
         }
 
         public function find_by_name($name) {
-            $query = "SELECT * FROM categories WHERE name = :name";
+            $query = "SELECT * FROM category WHERE name = :name";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':name', $name);
             $statement->execute();
@@ -41,7 +41,7 @@
         }
 
         public function update($categoryID, $name, $description) {
-            $query = "UPDATE categories SET name = :name, description = :description WHERE categoryID = :categoryID";
+            $query = "UPDATE category SET name = :name, description = :description WHERE categoryID = :categoryID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':categoryID', $categoryID);
             $statement->bindValue(':name', $name);
@@ -51,7 +51,7 @@
         }
 
         public function delete($categoryID) {
-            $query = "DELETE FROM categories WHERE categoryID = :categoryID";
+            $query = "DELETE FROM category WHERE categoryID = :categoryID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':categoryID', $categoryID);
             $statement->execute();

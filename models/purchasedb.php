@@ -23,7 +23,7 @@
             return $purchase;
         }
 
-        public function get_purchases_by_user($userID) {
+        public function get_purchase_by_user($userID) {
             $query = "SELECT * FROM purchases WHERE userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
@@ -33,7 +33,7 @@
             return $purchases;
         }
 
-        public function count_user_purchases($userID) {
+        public function count_user_purchase($userID) {
             $query = "SELECT COUNT(*) AS purchase_count FROM purchases WHERE userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
