@@ -32,7 +32,7 @@
                             </li>
                             <?php if ($is_logged_in && $user_role === 'Customer'): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=view_user_orders">Your purchases</a>
+                                    <a class="nav-link" href="index.php?action=view_user_purchases">Your purchases</a>
                                 </li>
                             <?php endif; ?>
                         </ul>

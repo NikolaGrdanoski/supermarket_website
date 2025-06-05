@@ -2,10 +2,10 @@
 
     class PurchaseDB {
         public function create_purchase($userID, $total_cost) {
-            $query = "INSERT INTO purchases (userID, total_cost) VALUES (:userID, :total_cost)";
+            $query = "INSERT INTO purchase (userID, total) VALUES (:userID, :total)";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
-            $statement->bindValue(':total_cost', $total_cost);
+            $statement->bindValue(':total', $total_cost);
             $statement->execute();
             $purchaseID = Database::get_db()->lastInsertId();
             $statement->closeCursor();
@@ -14,27 +14,27 @@
         }
 
         public function get_purchase_by_id($purchaseID) {
-            $query = "SELECT * FROM purchases WHERE purchaseID = :purchaseID";
+            $query = "SELECT * FROM purchase WHERE purchaseID = :purchaseID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':purchaseID', $purchaseID);
             $statement->execute();
-            $purchase = $statement->fetch();
+            $purchases = $statement->fetch();
             $statement->closeCursor();
-            return $purchase;
+            return $purchases;
         }
 
         public function get_purchase_by_user($userID) {
-            $query = "SELECT * FROM purchases WHERE userID = :userID";
+            $query = "SELECT * FROM purchase WHERE userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
             $statement->execute();
             $purchases = $statement->fetchAll();
             $statement->closeCursor();
-            return $purchases;
+            return  $purchases;
         }
 
         public function count_user_purchase($userID) {
-            $query = "SELECT COUNT(*) AS purchase_count FROM purchases WHERE userID = :userID";
+            $query = "SELECT COUNT(*) AS purchase_count FROM purchase WHERE userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
             $statement->execute();
@@ -45,7 +45,7 @@
         }
 
         public function remove_purchase($purchaseID) {
-            $query = "DELETE FROM purchases WHERE purchaseID = :purchaseID";
+            $query = "DELETE FROM purchase WHERE purchaseID = :purchaseID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':purchaseID', $purchaseID);
             $statement->execute();

@@ -50,7 +50,7 @@
         }
 
         public function calculate_cart_total($userID) {
-            $query = "SELECT SUM product.price * cart.quantity) AS total_cost FROM cart JOIN product ON cart.productID = product.productID WHERE cart.userID = :userID";
+            $query = "SELECT SUM(product.price * cart.quantity) AS total_cost FROM cart JOIN product ON cart.productID = product.productID WHERE cart.userID = :userID";
             $statement = Database::get_db()->prepare($query);
             $statement->bindValue(':userID', $userID);
             $statement->execute();

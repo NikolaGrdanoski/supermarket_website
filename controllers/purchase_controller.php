@@ -3,7 +3,7 @@
     require_once './models/cartdb.php';
 
     class PurchaseController {
-        public function view_purchase($purchaseID) {
+        public function view_purchaseID($purchaseID) {
             $purchaseDB = new PurchaseDB();
             $purchase = $purchaseDB->get_purchase_by_id($purchaseID);
             include './views/purchase/show_purchase.php';
@@ -11,7 +11,7 @@
 
         public function view_user_purchases($userID) {
             $purchaseDB = new PurchaseDB();
-            $purchases = $purchaseDB->get_purchases_by_user($userID);
+            $purchases = $purchaseDB->get_purchase_by_user($userID);
             include './views/purchase/user_purchases.php';
         }
 
@@ -38,6 +38,9 @@
                 $user = $userDB->find_by_id($userID);
                 $user_email = $user['email'];
                 $user_name = $user['name'];
+
+                header("Location: index.php?action=view_purchase&purchaseID=" . $purchaseID);
+                exit();
             } else {
                 echo "Error: Cart is empty or an error occurred.";
             }

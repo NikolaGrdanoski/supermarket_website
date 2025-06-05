@@ -187,7 +187,7 @@
         case 'view_purchase':
             $purchaseID = filter_input(INPUT_POST, 'purchaseID', FILTER_VALIDATE_INT);
             $controller = new purchaseController();
-            $controller->view_purchase($purchaseID);
+            $controller->view_purchaseID($purchaseID);
             break;
 
         case 'view_user_purchases':

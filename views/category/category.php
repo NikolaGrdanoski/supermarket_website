@@ -42,7 +42,7 @@
                                             </p>
                                             <p class="card-text">
                                                 <strong>
-                                                    Price: <?php echo "<span class='badge bg-info'>" . number_format($product['price'], 2) . " MKD</span>"; ?>
+                                                    Price: <?php echo number_format($product['price'], 2) . " MKD</span>"; ?>
                                                 </strong>
                                             </p>
                                             <a href="index.php?action=show_product&productID=<?php echo $product['productID']; ?>" class="btn btn-info">View</a>
