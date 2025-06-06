@@ -24,7 +24,7 @@
     $method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
     $action = filter_input(INPUT_POST, 'action');    
 
-    /*$https = filter_input(INPUT_SERVER, 'HTTPS');
+    $https = filter_input(INPUT_SERVER, 'HTTPS');
     
     if (!$https) {
         $host = filter_input(INPUT_SERVER, 'HTTP_HOST');
@@ -32,7 +32,7 @@
         $url = 'https://' . $host . $uri;
         header("Location: " . $url);
         exit;
-    }*/
+    }
     
 
     if ($action == NULL) {
