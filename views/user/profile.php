@@ -16,7 +16,7 @@
                     <p><?php echo htmlspecialchars($user['name']); ?></p>
                 </div>
                 <div class="list-group-item">
-                    <h5>Name</h5>
+                    <h5>Surname</h5>
                     <p><?php echo htmlspecialchars($user['surname']); ?></p>
                 </div>
                 <div class="list-group-item">
@@ -24,11 +24,11 @@
                     <p><?php echo htmlspecialchars($user['email']); ?></p>
                 </div>
                 <div class="list-group-item">
-                    <h5>Phone</h5>
+                    <h5>Country</h5>
                     <p><?php echo htmlspecialchars($user['phone']); ?></p>
                 </div>
                 <div class="list-group-item">
-                    <h5>Country</h5>
+                    <h5>Phone</h5>
                     <p><?php echo htmlspecialchars($user['country']); ?></p>
                 </div>
                 <br>

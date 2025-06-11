@@ -5,9 +5,9 @@
 
     define('MAILHOST', 'smtp.gmail.com');
     define('MAILPORT', 587);
-    define('USERNAME', 'testmail@gmail.com');
-    define('PASSWORD', 'testpassword');
-    define("SEND_FROM", 'testmail@gmail.com');
+    define('USERNAME', 'address@gmail.com');
+    define('PASSWORD', '123');
+    define("SEND_FROM", 'address@gmail.com');
     define("SEND_FROM_NAME", "Super Kuper");
     define('SMTP_ENCRYPTION', 'tls');
 
