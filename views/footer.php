@@ -13,6 +13,27 @@
                     <div class="col-md-3">
                         <h1>Super Kuper</h1>
                         <p class="mt-2">Kupi super vo Super Kuper</p>
+                        <script>
+                            function dateDisplay() {
+                                const date = new Date();
+                                let h = date.getHours();
+                                let m = date.getMinutes();
+                                let s = date.getSeconds();
+
+                                //let day = date.getDay();
+                                //let mm = date.getMonth();
+                                //let y = date.getFullYear();
+
+                                document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+                                //document.getElementById("date").innerHTML = day + "/" + mm + "/" + y;
+                            }
+
+                            setInterval(function(){
+                                dateDisplay();
+                            }, 1000);
+                        </script>
+                        <div id="time"></div>
+                        <!--<div id="date"></div>-->
                     </div>
                 </div>
                 <div class="text-center mt-4">
